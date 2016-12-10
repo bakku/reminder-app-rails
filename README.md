@@ -1,24 +1,15 @@
-# README
+# Reminder App Play
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+For my bachelor's thesis I'm creating a 12factor app using different web frameworks which run on heroku. This is the Play framework version using Scala
 
-Things you may want to cover:
+## The App
 
-* Ruby version
+The app is a simple reminder app. It features:
 
-* System dependencies
+- An API where users can post a remind message, a due date and their email
+- Background workers which check the reminders given by all users and send emails to the users when they wanted to be reminded
+- Admin tasks like deleting all reminders or sending all reminders right now
+- A simple authentication using username and password as well as http basic to show all reminders for a user or to create new reminders or delete them
 
-* Configuration
+The app should implement all 12 factors of the 12 factor app methodology: https://12factor.net
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
