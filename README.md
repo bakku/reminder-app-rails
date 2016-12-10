@@ -1,6 +1,6 @@
 # Reminder App Play
 
-For my bachelor's thesis I'm creating a 12factor app using different web frameworks which run on heroku. This is the Play framework version using Scala
+For my bachelor's thesis I'm creating a 12factor app using different web frameworks which run on heroku. This is the Ruby on Rails version.
 
 ## The App
 
