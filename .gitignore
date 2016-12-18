@@ -18,4 +18,9 @@
 
 # Jetbrains
 /.idea/
+
+# dotenv files
 .env*
+
+# only commit the example file
+!.env.example
