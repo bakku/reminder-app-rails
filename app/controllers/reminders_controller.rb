@@ -1,13 +1,10 @@
 class RemindersController < ApplicationController
-  before_action :produces_json   
+  include UserAuthentication
+
+  before_action :authenticate_user!
 
   def index
-    head :ok
-  end
-
-  private
-
-  def produces_json
-    request.format = :json
+    puts current_user
+    render json: Reminder.all
   end
 end
