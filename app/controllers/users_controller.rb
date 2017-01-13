@@ -11,11 +11,11 @@ class UsersController < ApplicationController
   before_action :user_must_have_current_id!, only: [:show, :delete]
 
   def index
-    render json: User.all
+    render json: User.all.as_json(except: User.ignored_fields)
   end
 
   def show
-    render json: User.find(params[:id])
+    render json: User.find(params[:id]).as_json(except: User.ignored_fields)
   end
 
   def create
