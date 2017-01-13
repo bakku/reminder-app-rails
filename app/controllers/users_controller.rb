@@ -33,17 +33,6 @@ class UsersController < ApplicationController
 
   private
 
-  def user_must_be_admin!
-    if current_user.is_admin == false
-      head :forbidden
-    end
-  end
-
-  def user_must_have_current_id!
-    if current_user.id != params[:id].to_i && current_user.is_admin == false
-      head :forbidden
-    end
-  end
 
   def user_params
     params.require(:user).permit(:email, :password)
