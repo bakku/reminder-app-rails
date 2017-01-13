@@ -21,5 +21,7 @@ module ReminderAppRails
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.consider_all_requests_local = (ENV['FULL_ERROR_REPORTS'] == 'true')
+    config.log_level = ENV['LOG_LEVEL'].to_sym
   end
 end
