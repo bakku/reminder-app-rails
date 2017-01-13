@@ -3,15 +3,19 @@ class UsersController < ApplicationController
    
   protect_from_forgery with: :null_session
 
+  # authentication
   before_action :authenticate_user!, only: [:index, :show, :delete]
 
-  def index
-    user_must_be_admin!
+  # authorization
+  before_action :user_must_be_admin!, only: [:index]
+  before_action :user_must_have_current_id!, only: [:show, :delete]
 
+  def index
     render json: User.all
   end
 
   def show
+    render json: User.find(params[:id])
   end
 
   def create
@@ -23,7 +27,6 @@ class UsersController < ApplicationController
   end
 
   def delete
-    user_must_have_current_id!
     User.destroy(params[:id])
     head :ok
   end
@@ -37,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def user_must_have_current_id!
-    if current_user.id != params[:id]
+    if current_user.id != params[:id].to_i && current_user.is_admin == false
       head :forbidden
     end
   end
