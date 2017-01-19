@@ -1,11 +1,11 @@
 require_relative 'config/environment'
 
-task = Concurrent::TimerTask.new(execution_interval: 1) do 
+task = Concurrent::TimerTask.new(execution_interval: 60) do 
   reminders = Reminder.all
 
   reminders.each do |r|
     if r.reminder_date < DateTime.now
-      puts 'due!'
+      Resque.enqueue(ReminderMailJob, r.id)
     end
   end
 end
