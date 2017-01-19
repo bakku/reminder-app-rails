@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   before_save :hash_password
+  has_many :reminders
 
   def self.ignored_fields
     [:id, :password, :created_at, :updated_at, :is_admin]
