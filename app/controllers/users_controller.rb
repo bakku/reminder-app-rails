@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   protect_from_forgery with: :null_session
 
   # authentication
-  before_action :authenticate_user!, only: [:index, :show, :delete]
+  before_action :authenticate_user!, only: [:index, :show, :delete, :me]
 
   # authorization
   before_action :user_must_be_admin!, only: [:index]
@@ -29,6 +29,10 @@ class UsersController < ApplicationController
   def delete
     User.destroy(params[:id])
     head :ok
+  end
+
+  def me
+    render json: { location: user_show_path(current_user) }
   end
 
   private
